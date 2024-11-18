@@ -10,6 +10,10 @@ export default function VideoPlayer() {
         width="960"
         height="540"
         src="samples/dance-2"
+        transformation={{
+          streaming_profile: "hd",
+        }}
+        sourceTypes={["hls"]}
         fluid={true}
         controls={false}
         autoplay={true}
