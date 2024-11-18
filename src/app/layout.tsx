@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import Link from "next/link";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -28,7 +29,21 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <nav className="px-12 py-8 text-lg font-bold text-slate-600 flex justify-center bg-white absolute top-0 right-0 left-0">
+          <Link
+            className="px-4 py-2 hover:underline underline-offset-4"
+            href="/"
+          >
+            Home
+          </Link>
+          <Link
+            className="px-4 py-2 hover:underline underline-offset-4"
+            href="/12"
+          >
+            Another page
+          </Link>
+        </nav>
+        <main className="bg-slate-100 min-h-dvh">{children}</main>
       </body>
     </html>
   );
