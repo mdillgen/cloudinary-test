@@ -1,7 +1,12 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import "./globals.css";
+import Script from "next/script";
 import Link from "next/link";
+import {
+  CLOUDINARY_PLAYER_CSS,
+  CLOUDINARY_PLAYER_SCRIPT,
+} from "@/lib/cloudinary-player";
+import "./globals.css";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -26,6 +31,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link href={CLOUDINARY_PLAYER_CSS} rel="stylesheet" />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
@@ -44,6 +52,11 @@ export default function RootLayout({
           </Link>
         </nav>
         <main className="bg-slate-100 min-h-dvh">{children}</main>
+        <Script
+          id="cloudinary-video-player"
+          src={CLOUDINARY_PLAYER_SCRIPT}
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );
